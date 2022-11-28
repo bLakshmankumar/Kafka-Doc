@@ -46,13 +46,27 @@
 > Key-Concepts in kafka -:
 --------------------------
 #   > Records                   -:   Records are ntg but a collection of our data it'll record our data in key, value, timestamp 
-#   > Topics                    -:   Topic is ntg but a particular stream of data (simply it's a collection of records, all records are store in one topic)
-#   > Partitions                -:   
-#   > OFFSets                   -:    
+   
+#   > Topics                    -:   Topic is ntg but a particular stream of data (simply it's a collection of records, all records are store in one topic).bydefault it'll stores topic data for 7 days.
+#                                    If we wanna change that days limit we can change it from to your desired days based on our requirement.
+
+#   > Partitions                -:   A partition is the smallest storage unit that holds a subset of records owned by a topic.every partion is independent itself.
+
+#   > OFFSets                   -:   Each message with in the partitions gets an incremental id(every message stores in partition with incremental id that id we call as offset).
+#                                    incrimental means increasing(0,1,2,3,4,5.....n). for example i write a message in partion-0, offset 4 but i wanna change that message in that offeset. but it's not 
+#                                    possible to change the data in offsets once we write the data that's why we call it as an immutable.
+
+#   > Broker                    -:   Broker is ntg but an one server. like if you have one server on top of it we install a kafka and we configure broker with kafka. In kafka every broker does identify
+#                                    with number like Broker0, Broker1, Broker2...so on. Every broker has ID the ID should be a Number. For example in a single cluster i have a total 5 brokers,
+#                                    If i connect to one broker it'll connect to all  brokers. means if i connect to one broker it'll connect to entaire cluster.
+#                                    There is no limit to create a brokers in a cluster based on our cluster resources and our requirements we can create n.number of brokers. 
+
 #   > Single machine Kafka      -: 
+
 #   > Cluster                   -:   Cluster means it's a Collection of kafka brokers. Means actually collection of kafka servers has a collection of kafka brokers. These brokers will maintain the data.
+
 #  > For example if we have 3 kafka servers in my cluster so if one server is goes down it'll maintain a data in another two servers.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Deep Dive of each component -:
 =============================
@@ -81,7 +95,7 @@ Deep Dive of each component -:
        > Kafka’s topics are divided into several partitions. While the topic is a logical concept in Kafka, a partition is the smallest storage unit that holds a subset of records owned by a topic. 
        > Each partition is a single log file where records are written to it in an append-only fashion.
        > When talking about the content inside a partition, we will use the terms record and message interchangeably.
-       > We need to mention required partion count while we create a topic, and partition does start with 0.(Partetion-0, partition-1, partition-2).
+       > We need to mention required partion count while we create a topic, and we can create n.num of partitions but partition does start with 0.(Partetion-0, partition-1, partition-2).
  
    > Offsets and the ordering of messages -:
    -----------------------------------------
@@ -162,3 +176,5 @@ Deep Dive of each component -:
   # ======
         # >  ALL DIAGRAM STEPs REFERENCE YOU CAN VISIT (https://medium.com/event-driven-utopia/understanding-kafka-topic-partitions-ae40f80552e8)
 
+# How to create a Topic in Brokers -:
+===================================
