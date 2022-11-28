@@ -21,7 +21,7 @@
 
 > Where we can use kafka -:
 ---------------------------
-  > while we transfer the data in that time we use Kafka. It'll let us to publish and subscribe the stream of records.(like a meassage que system)
+   > while we transfer the data in that time we use Kafka. It'll let us to publish and subscribe the stream of records.(like a meassage que system)
  
 > Advantages of using kafka -:
 ------------------------------
@@ -35,7 +35,7 @@
 ------------------------
 #  We have some alternatives for kafa like 
 #      > AMQP(Advanced messaging que protocal) -: It's also an open-source.
-#      > RABITMQ                -:  It's also an open-source, and it's an asynchroness messaging system.
+#      > RABITMQ                -: It's also an open-source, and it's an asynchroness messaging system.
 #      > JMS                    -: Java messaging system. 
 #      > Amazon kinesis         -: It has a highly capable and a scalable and durable real-time data streaming service that can continuously capture gigabytes of data per second from hundreds.
 #      > Active MQ              -: It's also an apache service written in java and it's also provide HA, Scalable, high Performance, and speed.
@@ -45,12 +45,12 @@
 
 > Key-Concepts in kafka -:
 --------------------------
-#   > Records                   -:     Records are ntg but a collection of our data it'll record our data in key, value, timestamp 
-#   > Topics                    -:    Topic is ntg but a particular stream of data (simply it's a collection of records, all records are store in one topic)
+#   > Records                   -:   Records are ntg but a collection of our data it'll record our data in key, value, timestamp 
+#   > Topics                    -:   Topic is ntg but a particular stream of data (simply it's a collection of records, all records are store in one topic)
 #   > Partitions                -:   
 #   > OFFSets                   -:    
 #   > Single machine Kafka      -: 
-#   > Cluster                   -:    Cluster means it's a Collection of kafka brokers. Means actually collection of kafka servers has a collection of kafka brokers. These brokers will maintain the data.
+#   > Cluster                   -:   Cluster means it's a Collection of kafka brokers. Means actually collection of kafka servers has a collection of kafka brokers. These brokers will maintain the data.
 #  > For example if we have 3 kafka servers in my cluster so if one server is goes down it'll maintain a data in another two servers.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -72,15 +72,17 @@ Deep Dive of each component -:
       > Topics are the central concept in Kafka that decouples producers and consumers. A consumer pulls messages off of a Kafka topic while producers push messages into a Kafka topic.
       > A topic can have many producers and many consumers.
       > Topic it's ntg but a particular stream of data. simply we can call it as a collection of records and all records we store in an one topic.(Where we can store our messages we can call a topic).
-	  > Every Topic we can identifies by it's Name. we can create number of topics on our own.
-	  > Every Topic has unique name, in kafka naming convention is very important.
+      > Every Topic we can identifies by it's Name. we can create number of topics on our own.
+      > Every Topic has unique name, in kafka naming convention is very important.
+      > When we create a topic we need to mention/provide How many partitions we required.
 	   
    > Partitions -:
-   ----------------
+   ---------------
        > Kafka’s topics are divided into several partitions. While the topic is a logical concept in Kafka, a partition is the smallest storage unit that holds a subset of records owned by a topic. 
        > Each partition is a single log file where records are written to it in an append-only fashion.
        > When talking about the content inside a partition, we will use the terms record and message interchangeably.
-	   
+       > We need to mention required partion count while we create a topic, and partition does start with 0.(Partetion-0, partition-1, partition-2).
+ 
    > Offsets and the ordering of messages -:
    -----------------------------------------
            > The records in the partitions are each assigned a sequential identifier called the offset, which is unique for each record within the partition.
